@@ -55,23 +55,23 @@ public class KonaneOnlineDAO extends DAO<KonaneOnline> {
     public KonaneOnline create(KonaneOnline object) {
         try {
             String statement = "INSERT INTO game (game_name, game_white_player, game_black_player, game_last_player"
-                    + " game_ia_white_player, game_ia_black_player , game_help, game_start) "
+                    + " ,game_ia_white_player, game_ia_black_player , game_help, game_start) "
                     + "VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement ps = connexion.prepareStatement(statement);
 
             ps.setString(1, object.getSaveName());
             ps.setString(2, object.getPlayerWhite().getName());
             ps.setString(3, object.getPlayerBlack().getName());
-            ps.setString(4, object.getLastPlayerPlayed().getName());
+            ps.setString(4, (object.getLastPlayerPlayed() == null) ? null : object.getLastPlayerPlayed().getName());
             ps.setInt(5, object.getType_ia_white_player());
             ps.setInt(6, object.getType_ia_black_player());
             ps.setBoolean(7, object.isHelp());
             ps.setBoolean(8, object.isStart());
-
+            ps.executeUpdate();
+            
             // Création du plateau de jeu pour la partie
             Board board = new BoardDAO().create(object.getBoard());
             
-            ps.executeUpdate();
             object = this.find(object.getSaveName());
         } catch (SQLException ex) {
             Logger.getLogger(PlayerDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -86,7 +86,7 @@ public class KonaneOnlineDAO extends DAO<KonaneOnline> {
             String statement = "UPDATE game SET game_last_player = ?, game_help = ?, game_start = ? WHERE game_name = ?";
             PreparedStatement ps = connexion.prepareStatement(statement);
             
-            ps.setString(1, object.getLastPlayerPlayed().getName());
+            ps.setString(1, (object.getLastPlayerPlayed() == null) ? null : object.getLastPlayerPlayed().getName());
             ps.setBoolean(2, object.isHelp());
             ps.setBoolean(3, object.isStart());
             ps.setString(4, object.getSaveName());

@@ -24,29 +24,34 @@ public class BoardDAO extends DAO<Board> {
         Pawn[][] squares = null;
 
         try {
+            // Récupération du plateau de jeu
             String statement = "SELECT * FROM board WHERE game_name = ? ";
             PreparedStatement ps = connexion.prepareStatement(statement);
             ps.setString(1, id);
             ResultSet result = ps.executeQuery();
 
             if (result.first()) {
+                
+                int nb_cases = result.getInt("board_nb_cases");
 
                 // Récupération des pions du plateau
                 statement = "SELECT * FROM square WHERE game_name = ? ";
                 ps = connexion.prepareStatement(statement);
                 ps.setString(1, id);
                 result = ps.executeQuery();
+                
+                squares = new Pawn[nb_cases][nb_cases];
 
                 while (result.next()) {
                     Pawn pawn = null;
                     // Si la case est vide ( color = -1), on ne crée pas le pion
-                    if (result.getInt("square_color") != Pawn.NO_PAWN) {
-                        pawn = new Pawn(result.getInt("square_x"), result.getInt("square_y"), result.getInt("square_color"));
+                    if (result.getInt("square_pawn") != Pawn.NO_PAWN) {
+                        pawn = new Pawn(result.getInt("square_x"), result.getInt("square_y"), result.getInt("square_pawn"));
                     }
                     squares[result.getInt("square_x")][result.getInt("square_y")] = pawn;
                 }
 
-                board = new Board(id, result.getInt("board_nb_cases"), squares);
+                board = new Board(id, nb_cases, squares);
             }
 
         } catch (SQLException ex) {
@@ -58,6 +63,7 @@ public class BoardDAO extends DAO<Board> {
     @Override
     public Board create(Board object) {
         try {
+            // Création du pokateau de jeu
             String statement = "INSERT INTO board (game_name, board_nb_cases) VALUES (?,?)";
             PreparedStatement ps = connexion.prepareStatement(statement);
 
