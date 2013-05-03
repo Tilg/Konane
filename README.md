@@ -1,4 +1,4 @@
 Konane
 ======
 
-Projet Java Logiciel - M1 MIAGE 2013
+Projet Java - M1 MIAGE 2013
