@@ -31,8 +31,8 @@ public abstract class Konane {
         this.player_white = p_white;
         this.player_black = p_black;
         this.last_player_played = p_black;
-        p_white.setTmp_color(Color.WHITE_PAWN);
-        p_black.setTmp_color(Color.BLACK_PAWN);
+      //  p_white.setTmp_color(Color.WHITE_PAWN);
+      // p_black.setTmp_color(Color.BLACK_PAWN);
         this.type_ia_white_player = type_white_player;
         this.type_ia_black_player = type_back_player;
     }
@@ -80,6 +80,14 @@ public abstract class Konane {
     public int getType_ia_black_player() {
         return type_ia_black_player;
     }
+    
+    public Player getOppOf(Player p){
+        if(p.getTmp_color() == Color.BLACK_PAWN){
+            return this.player_white;
+        } else {
+            return this.player_black;
+        }    
+    } 
 
     //Setters
     public void setBoard(Board board) {

@@ -34,6 +34,13 @@ public class KonaneMove {
         this.to_Y = fromY;
     }
 
+    public KonaneMove(KonaneMove m) {
+        this.from_X = m.from_X;
+        this.from_Y = m.from_Y;
+        this.to_X = m.to_X;
+        this.to_Y = m.to_Y;
+    }
+    
     //Getter and Setters
     public int getFromX() {
         return from_X;

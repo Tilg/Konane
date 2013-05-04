@@ -19,8 +19,4 @@ public class Human extends Player {
         super(name,nb_wins,nb_loose);
     }
 
-    @Override
-    public KonaneMove makeMove(Konane game, KonaneMove move) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 }

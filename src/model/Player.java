@@ -62,6 +62,5 @@ public abstract class Player {
         this.tmp_color = tmp_color;
     }
     //Fonctions
-    
-    public abstract KonaneMove makeMove(Konane game,KonaneMove move);
+ 
 }
