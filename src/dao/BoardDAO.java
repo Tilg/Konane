@@ -56,7 +56,7 @@ public class BoardDAO extends DAO<Board> {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(PlayerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HumanDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return board;
     }
@@ -90,7 +90,7 @@ public class BoardDAO extends DAO<Board> {
 
             object = this.find(object.getGame_name());
         } catch (SQLException ex) {
-            Logger.getLogger(PlayerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HumanDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return object;
     }
@@ -117,7 +117,7 @@ public class BoardDAO extends DAO<Board> {
 
             object = this.find(object.getGame_name());
         } catch (SQLException ex) {
-            Logger.getLogger(PlayerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HumanDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return object;
     }
@@ -130,7 +130,7 @@ public class BoardDAO extends DAO<Board> {
             ps.setString(1, object.getGame_name());
             ps.executeUpdate();   
         } catch (SQLException ex) {
-            Logger.getLogger(PlayerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HumanDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

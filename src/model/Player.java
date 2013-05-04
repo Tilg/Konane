@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Caedes
  */
-public class Player {
+public abstract class Player {
 
     private String name = "Player";
     private int nb_wins = 0;
@@ -63,17 +63,5 @@ public class Player {
     }
     //Fonctions
     
-    /*public KonaneMove makeMove(Konane game,KonaneMove move) {
-        ArrayList<KonaneMove> possible_moves = new ArrayList<KonaneMove>();
-        possible_moves = game.generateMoves(this);
-        
-        // Si il n'y a aucun coup possible, le joueur a perdu
-        if(possible_moves.isEmpty()) {
-            
-        }
-        
-        
-        
-        return null;
-    }*/
+    public abstract KonaneMove makeMove(Konane game,KonaneMove move);
 }

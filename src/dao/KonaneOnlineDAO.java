@@ -35,9 +35,9 @@ public class KonaneOnlineDAO extends DAO<KonaneOnline> {
                 
                 // Récupération des informations de la partie
                 konane = new KonaneOnline(id
-                        ,new PlayerDAO().find(result.getString("game_white_player"))
-                        ,new PlayerDAO().find(result.getString("game_black_player"))
-                        ,new PlayerDAO().find(result.getString("game_last_player"))
+                        ,new HumanDAO().find(result.getString("game_white_player"))
+                        ,new HumanDAO().find(result.getString("game_black_player"))
+                        ,new HumanDAO().find(result.getString("game_last_player"))
                         ,board
                         ,result.getInt("game_ia_white_player")
                         ,result.getInt("game_ia_black_player")
@@ -46,7 +46,7 @@ public class KonaneOnlineDAO extends DAO<KonaneOnline> {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(PlayerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HumanDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return konane;
     }
@@ -74,7 +74,7 @@ public class KonaneOnlineDAO extends DAO<KonaneOnline> {
             
             object = this.find(object.getSaveName());
         } catch (SQLException ex) {
-            Logger.getLogger(PlayerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HumanDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return object;
     }
@@ -98,7 +98,7 @@ public class KonaneOnlineDAO extends DAO<KonaneOnline> {
             
             object = this.find(object.getSaveName());
         } catch (SQLException ex) {
-            Logger.getLogger(PlayerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HumanDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
  
         return object;
@@ -112,7 +112,7 @@ public class KonaneOnlineDAO extends DAO<KonaneOnline> {
             ps.setString(1, object.getSaveName());
             ps.executeUpdate();   
         } catch (SQLException ex) {
-            Logger.getLogger(PlayerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HumanDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
