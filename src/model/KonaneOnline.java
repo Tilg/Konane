@@ -10,16 +10,18 @@ package model;
  */
 public class KonaneOnline extends Konane {
 
-    public KonaneOnline(Player p1, Player p2, int nbCase) {
-        super(p1, p2, nbCase, 0, 0);
+    public KonaneOnline(Player p_white, Player p_black, int nbCase) {
+        super(p_white, p_black, nbCase, 0, 0);
     }
     
-    public KonaneOnline(String save_name, Player p1, Player p2, Player last, Board board, 
+    public KonaneOnline(String save_name, Player p_white, Player p_black, Player last, Board board, 
             int type_white_player, int type_black_player, boolean help, boolean start) {
         this.save_name = save_name;
         this.board = board;
-        this.player_white = p1;
-        this.player_black = p2;
+        this.player_white = p_white;
+        this.player_black = p_black;
+        p_white.setTmp_color(Pawn.WHITE_PAWN);
+        p_black.setTmp_color(Pawn.BLACK_PAWN);
         this.last_player_played = last;
         this.type_ia_white_player = type_white_player;
         this.type_ia_black_player = type_black_player;

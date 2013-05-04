@@ -28,10 +28,12 @@ public abstract class Konane {
     public Konane() {
     }
     
-    public Konane(Player p1, Player p2, int nbCase, int type_white_player, int type_back_player) {
+    public Konane(Player p_white, Player p_black, int nbCase, int type_white_player, int type_back_player) {
         this.board = new Board(save_name,nbCase);
-        this.player_white = p1;
-        this.player_black = p2;
+        this.player_white = p_white;
+        this.player_black = p_black;
+        p_white.setTmp_color(Pawn.WHITE_PAWN);
+        p_black.setTmp_color(Pawn.BLACK_PAWN);
         //Faire l'affectation des niveaux d'IA selon le type
         this.nb_pawns_white_player = (nbCase*nbCase)/2;
         this.nb_pawns_black_player = (nbCase*nbCase)/2;

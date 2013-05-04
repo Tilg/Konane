@@ -13,6 +13,7 @@ public class Player {
     private String name = "Player";
     private int nb_wins = 0;
     private int nb_loose = 0;
+    private int tmp_color = -1;
     
     //Constructors
     public Player(String name) {
@@ -38,6 +39,10 @@ public class Player {
         return nb_loose;
     }
 
+    public int getTmp_color() {
+        return tmp_color;
+    }
+
     //Setters
     public void setName(String name) {
         this.name = name;
@@ -49,6 +54,10 @@ public class Player {
 
     public void setNbloose(int nbloose) {
         this.nb_loose = nbloose;
+    }
+    
+    public void setTmp_color(int tmp_color) {
+        this.tmp_color = tmp_color;
     }
     //Fonctions
 }
