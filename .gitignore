@@ -1,9 +1,11 @@
 *.class
 
 # Package Files #
-*.jar
+.jar
 *.war
 *.ear
 /nbproject/*
 build.xml
 manifest.mf
+/build/
+/dist/
