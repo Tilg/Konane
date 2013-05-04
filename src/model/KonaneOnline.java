@@ -4,11 +4,18 @@
  */
 package model;
 
+import network.TCPClient;
+import network.TCPServer;
+
 /**
  *
  * @author Caedes
  */
 public class KonaneOnline extends Konane {
+    
+    private TCPServer server;
+    private TCPClient client1;
+    private TCPClient client2;
 
     public KonaneOnline(Player p_white, Player p_black, int nbCase) {
         super(p_white, p_black, nbCase, 0, 0);
@@ -27,6 +34,9 @@ public class KonaneOnline extends Konane {
         this.type_ia_black_player = type_black_player;
         this.help = help;
         this.start = start;
+        this.client1 = new TCPClient();
+        this.client2 = new TCPClient();
+        this.server = new TCPServer(client1, client2);
     }
     
     
