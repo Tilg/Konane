@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Board;
+import model.Color;
 import model.Pawn;
 
 /**
@@ -45,8 +46,8 @@ public class BoardDAO extends DAO<Board> {
                 while (result.next()) {
                     Pawn pawn = null;
                     // Si la case est vide ( color = -1), on ne crée pas le pion
-                    if (result.getInt("square_pawn") != Pawn.NO_PAWN) {
-                        pawn = new Pawn(result.getInt("square_x"), result.getInt("square_y"), result.getInt("square_pawn"));
+                    if (result.getInt("square_pawn") != Color.NO_PAWN.getValue()) {
+                        pawn = new Pawn(result.getInt("square_x"), result.getInt("square_y"), Color.getColor(result.getInt("square_pawn")));
                     }
                     squares[result.getInt("square_x")][result.getInt("square_y")] = pawn;
                 }
@@ -82,7 +83,7 @@ public class BoardDAO extends DAO<Board> {
                     ps.setInt(1, i);
                     ps.setInt(2, j);
                     ps.setString(3, object.getGame_name());
-                    ps.setInt(4, (pawn == null) ? Pawn.NO_PAWN : pawn.getColor());
+                    ps.setInt(4, (pawn == null) ? Color.NO_PAWN.getValue() : pawn.getColor().getValue());
                     ps.executeUpdate();
                 }
             }
@@ -106,7 +107,7 @@ public class BoardDAO extends DAO<Board> {
                     String statement = "UPDATE square SET square_pawn = ? WHERE game_name = ? "
                             + "AND square_x = ? AND square_y = ?";
                     PreparedStatement ps = connexion.prepareStatement(statement);
-                    ps.setInt(1, (pawn == null) ? Pawn.NO_PAWN : pawn.getColor());
+                    ps.setInt(1, (pawn == null) ? Color.NO_PAWN.getValue() : pawn.getColor().getValue());
                     ps.setString(2, object.getGame_name());
                     ps.setInt(3, i);
                     ps.setInt(4, j);

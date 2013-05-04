@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Caedes
@@ -13,7 +15,7 @@ public class Player {
     private String name = "Player";
     private int nb_wins = 0;
     private int nb_loose = 0;
-    private int tmp_color = -1;
+    private Color tmp_color;
     
     //Constructors
     public Player(String name) {
@@ -39,7 +41,7 @@ public class Player {
         return nb_loose;
     }
 
-    public int getTmp_color() {
+    public Color getTmp_color() {
         return tmp_color;
     }
 
@@ -56,8 +58,22 @@ public class Player {
         this.nb_loose = nbloose;
     }
     
-    public void setTmp_color(int tmp_color) {
+    public void setTmp_color(Color tmp_color) {
         this.tmp_color = tmp_color;
     }
     //Fonctions
+    
+    /*public KonaneMove makeMove(Konane game,KonaneMove move) {
+        ArrayList<KonaneMove> possible_moves = new ArrayList<KonaneMove>();
+        possible_moves = game.generateMoves(this);
+        
+        // Si il n'y a aucun coup possible, le joueur a perdu
+        if(possible_moves.isEmpty()) {
+            
+        }
+        
+        
+        
+        return null;
+    }*/
 }

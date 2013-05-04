@@ -10,16 +10,16 @@ package model;
  */
 public class Pawn {
     
-    public final static int NO_PAWN = -1;
+    /*public final static int NO_PAWN = -1;
     public final static int BLACK_PAWN = 0;
     public final static int WHITE_PAWN = 1;
-    
-    private int color; // 0 : noir et 1 : blanc
+    */
+    private Color color; // 0 : noir et 1 : blanc
     private int x;
     private int y;
 
     //Fonctions
-    public Pawn(int x, int y, int color) {
+    public Pawn(int x, int y, Color color) {
         this.x = x;
         this.y = y;
         this.color = color;
@@ -42,11 +42,11 @@ public class Pawn {
         this.y = y;
     }
 
-    public int getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(int color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
