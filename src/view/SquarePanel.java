@@ -5,8 +5,12 @@
 package view;
 
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import model.Color;
+import model.Konane;
 
 /**
  *
@@ -17,8 +21,12 @@ public class SquarePanel extends JPanel {
     private int x;
     private int y;
     private Color color;
+    private Konane konane;
+    private Image img;
 
-    public SquarePanel(int x, int y, Color color) {
+    public SquarePanel(int x, int y, Color color, Konane konane, Image img) {
+        this.img = img;
+        this.konane = konane;
         this.x = x;
         this.y = y;
         this.color = color;
@@ -30,5 +38,17 @@ public class SquarePanel extends JPanel {
         else {
             this.setBackground(java.awt.Color.WHITE);
         }
+        //Mettre une image correspondant 
+        
+         this.addMouseListener(new MouseAdapter(){      
+          public void mouseReleased(MouseEvent event){
+                if(event.getButton() == BUTTON1){
+                    
+                }
+            }
+        });
     }
+
+   
+
 }

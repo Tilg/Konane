@@ -25,6 +25,7 @@ public class MainWindow extends javax.swing.JFrame {
     
     private Konane game;
     private JPanel GamePanel;
+    private BoardPanel boardPanel;
         
     /**
      * Creates new form MainWindow
@@ -321,8 +322,7 @@ public class MainWindow extends javax.swing.JFrame {
         }
         this.game = new KonaneLocal(Jp1, Jp2, nbCase, typeP1, typeP2);
 
-        BoardPanel boardPanel = new BoardPanel(nbCase);
-        
+        this.boardPanel = new BoardPanel(nbCase, this.game);
         this.GamePanel.setPreferredSize(new Dimension(800, 800));
         this.GamePanel.add(boardPanel,  new GridBagConstraints (0, 0, 1, 1, 0, 0,
                                                    GridBagConstraints.CENTER,
