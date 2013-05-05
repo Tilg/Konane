@@ -36,11 +36,13 @@ public class SquarePanel extends JPanel {
         
         this.setPreferredSize(new Dimension(60, 60));
         // Définition de l'arriere plan
-        /*if ((cox + coy) % 2 == 1) {
-            this.add(new JLabel(new ImageIcon(getClass().getResource("icons/caseN.png"))));
+        if ((cox + coy) % 2 == 1) {
+            //this.add(new JLabel(new ImageIcon(getClass().getResource("icons/caseN.png"))));
+            this.setBackground(java.awt.Color.ORANGE);
         } else {
-            this.add(new JLabel(new ImageIcon(getClass().getResource("icons/caseB.png"))));
-        }*/
+            //this.add(new JLabel(new ImageIcon(getClass().getResource("icons/caseB.png"))));
+            this.setBackground(java.awt.Color.black);
+        }
         this.add(img);
         //Mettre une image correspondant 
 
