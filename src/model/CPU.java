@@ -1,18 +1,22 @@
 package model;
 
-import controller.KonaneException;
 import java.util.ArrayList;
 
 /**
- * Implémentation de l'algorithme Minimax La classe CPU est un joueur dirigé par
- * le programme
+ * Implémentation de l'algorithme Minimax.
+ * La classe CPU est un joueur dirigé par le programme
+ * Plus d'info sur l'algorithme sur:
+ *  http://fr.wikipedia.org/wiki/Algorithme_minimax
  *
  * @author Hadrien
  */
 public class CPU extends Player {
 
-    private int level = 1; // Niveau de difficulté de l'IA
-
+    /**
+     * Niveau de difficulté de l'IA
+     */
+    private int level = 2; 
+    
     /**
      * Par défaut l'IA analyse uniquement un coup à l'avance
      */
@@ -28,7 +32,7 @@ public class CPU extends Player {
      */
     public CPU(int level) {
         super("CPU");
-        if (level >= 0) {
+        if (level >= 2) {
             this.level = level;
         }
     }
@@ -43,7 +47,7 @@ public class CPU extends Player {
     }
 
     /**
-     * Constructeur avec uniquement le nom du joueur
+     * Constructeur avec uniquement le nom du joueur.
      *
      * @param nom
      * @param level
@@ -56,20 +60,22 @@ public class CPU extends Player {
     }
 
     /**
-     * Minimax: But de la fonction min - Minimiser le score de l'adversaire
+     * Minimax: But de la fonction min - Minimiser le score de l'adversaire.
+     * 
+     * @param game 
+     * @param depth
      */
     public double min(KonaneLocal game, int depth) {
 
         double min = (+100), val; // au départ, le score min est initiaisé avec un gros entier positif
 
-        ArrayList<KonaneMove> possibleMoves = new ArrayList<KonaneMove>();
-
         int i, j;
 
         // On récupère l'ensemble des coups possibles de l'opposant... 
-        possibleMoves = game.generateMoves(game.getOppOf(this));
+        ArrayList<KonaneMove> possibleMoves = new ArrayList<KonaneMove>(game.generateMoves(game.getOppOf(this)));
 
-        if (depth == 0 || possibleMoves.size() == 0) {
+        
+        if (depth == 0 || possibleMoves.isEmpty()) {
             return heuristic_evaluation(game);
         }
 
@@ -84,26 +90,25 @@ public class CPU extends Player {
                 min = val;
             }
         }
-
         return min;
-
     }
 
     /**
      * Minimax: But de la fonction max - Maximiser le score de l'IA
+     *
+     * @param game 
+     * @param depth
      */
     public double max(KonaneLocal game, int depth) {
 
         double max = (-100), val; // ¨par défaut on initialise max, à une très petite valeur
 
-        ArrayList<KonaneMove> possibleMoves = new ArrayList<KonaneMove>();
-
         int i, j;
 
         // Génération de tous les coups possibles pour l'IA...
-        possibleMoves = game.generateMoves(this);
+        ArrayList<KonaneMove> possibleMoves = new ArrayList<KonaneMove>(game.generateMoves(this));
 
-        if (depth == 0 || possibleMoves.size() == 0) {
+        if (depth == 0 || possibleMoves.isEmpty()) {
             return heuristic_evaluation(game);
         }
 
@@ -127,32 +132,31 @@ public class CPU extends Player {
     }
 
     /**
-     * Evaluation de l'heuristique pour un tableau donné:
-     * Soit H(n) l'évaluation heuristique
-     * O(n) Le nombre de coups possibles pour l'adersaire (opposant)
-     * et P(n) Le nombre de coups possibles pour l'IA
-     * 
+     * Evaluation de l'heuristique pour un tableau donné.
+     * Soit:
+     *  - n l'état du jeu Konane à un instant donné
+     *  - H(n) l'évaluation heuristique
+     *  - O(n) Le nombre de coups possibles pour l'adersaire (opposant)
+     *  - P(n) Le nombre de coups possibles pour l'IA
      * Alors H(n) = P(n) - O(n)
-     * On privéligie un H(n) > 0
+     * On privéligie un H(n) > 
+     * 
+     * @param game 
      */
     public double heuristic_evaluation(KonaneLocal game) {
-
-
-        ArrayList<KonaneMove> AI_possibleMoves = new ArrayList<KonaneMove>(),
-                O_possibleMoves = new ArrayList<KonaneMove>();
 
         double heuristic_value;
 
         // Récupération des mouvements de l'IA et de l'opposant
-        AI_possibleMoves = game.generateMoves(this);
-        O_possibleMoves = game.generateMoves(game.getOppOf(this));
+        ArrayList<KonaneMove>  AI_possibleMoves = new ArrayList<KonaneMove>(game.generateMoves(this));
+        ArrayList<KonaneMove> O_possibleMoves = new ArrayList<KonaneMove>(game.generateMoves(game.getOppOf(this)));
 
 
-        if (AI_possibleMoves.size() == 0) // Pire cas: l'IA perd 
+        if (AI_possibleMoves.isEmpty()) // Pire cas: l'IA perd 
         {
             heuristic_value = (-100);
         } else {
-            if (O_possibleMoves.size() == 0) // Meilleur cas: l'IA gagne
+            if (O_possibleMoves.isEmpty()) // Meilleur cas: l'IA gagne
             {
                 heuristic_value = (+100);
             } else {
@@ -166,26 +170,23 @@ public class CPU extends Player {
 
     /**
      * Mouvement fait par l'IA suite à Minimax
+     * 
+     * @param game 
      */
     public KonaneMove makeMove(KonaneLocal game) {
 
-
-        ArrayList<KonaneMove> possibleMoves = new ArrayList<KonaneMove>();
-
         // récupration de l'ensembles des coups possibles pour l'IA
-        possibleMoves = game.generateMoves(this);
+        ArrayList<KonaneMove> possibleMoves = new ArrayList<KonaneMove>(game.generateMoves(this));
 
         // Cas du game over à traiter
-        if (possibleMoves.size() == 0) {
+        if (possibleMoves.isEmpty()) {
             // TODO: Programmer le GAME OVER
         }
-
 
         int DEPTH = level; // plus le niveau est élevé, plus l'IA sera précise
         double max = (-100), val; // on minimise max au début de l'algotithme
 
-
-        // création du meilleur coup possible (pard défaut le premier coup)
+        // création du meilleur coup possible (par défaut le premier coup)
         KonaneMove bestMove = new KonaneMove(possibleMoves.get(0));
 
         // Test de tous les coups
@@ -195,18 +196,15 @@ public class CPU extends Player {
 
             gameCopy.getBoard().makeMove(m);
 
-
             // simulation via minimax
             val = min(gameCopy, DEPTH);
 
             if (val > max) {
-                max = val; // un couip plus interressant a été trouvé
+                max = val; // un coup plus interressant a été trouvé
                 bestMove = m; // on le sauvegarde
             }
 
         }
-
         return bestMove;
-
     }
 }
