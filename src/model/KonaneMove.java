@@ -4,9 +4,7 @@
  */
 package model;
 
-import controller.KonaneException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  *
@@ -75,7 +73,12 @@ public class KonaneMove {
     }
 
     //Fonctions
-    
+
+    /**
+     * 
+     * @param possible_moves ArrayList de KonaneMove possibles
+     * @return  
+     */
     public boolean isValid(ArrayList<KonaneMove> possible_moves) {
 
         for (KonaneMove move : possible_moves) {
@@ -89,6 +92,10 @@ public class KonaneMove {
         return false;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public boolean isJump() {
         boolean isJumpX = ((this.to_X - this.from_X) % 2 == 0);
         boolean isJumpY = ((this.to_Y - this.from_Y) % 2 == 0);

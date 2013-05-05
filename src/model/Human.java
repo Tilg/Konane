@@ -5,7 +5,7 @@
 package model;
 
 /**
- *
+ * Classe implémentant un joueur humain
  * @author Romain
  */
 public class Human extends Player implements java.io.Serializable {

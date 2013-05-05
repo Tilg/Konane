@@ -7,6 +7,7 @@ package model;
 import java.util.ArrayList;
 
 /**
+ * Classe abstraite implémentant une partie de Konane
  *
  * @author Caedes
  */
@@ -31,8 +32,8 @@ public abstract class Konane implements java.io.Serializable {
         this.player_white = p_white;
         this.player_black = p_black;
         this.last_player_played = p_black;
-      //  p_white.setTmp_color(Color.WHITE_PAWN);
-      // p_black.setTmp_color(Color.BLACK_PAWN);
+        //  p_white.setTmp_color(Color.WHITE_PAWN);
+        // p_black.setTmp_color(Color.BLACK_PAWN);
         this.type_ia_white_player = type_white_player;
         this.type_ia_black_player = type_back_player;
     }
@@ -62,13 +63,6 @@ public abstract class Konane implements java.io.Serializable {
         return start;
     }
 
-    /*public int getNbPawnRemainingJ1() {
-     return nb_pawns_white_player;
-     }
-
-     public int getNbPawnRemainingJ2() {
-     return nb_pawns_black_player;
-     }*/
     public Player getLastPlayerPlayed() {
         return last_player_played;
     }
@@ -80,14 +74,6 @@ public abstract class Konane implements java.io.Serializable {
     public int getType_ia_black_player() {
         return type_ia_black_player;
     }
-    
-    public Player getOppOf(Player p){
-        if(p.getTmp_color() == Color.BLACK_PAWN){
-            return this.player_white;
-        } else {
-            return this.player_black;
-        }    
-    } 
 
     //Setters
     public void setBoard(Board board) {
@@ -116,6 +102,20 @@ public abstract class Konane implements java.io.Serializable {
     }
 
     /**
+     * On recherche le joueur opposé au joueur passé en paramètre
+     *
+     * @param p Player: joueur donné
+     * @return objet Player, adversaire de player dans la partie courante
+     */
+    public Player getOppOf(Player p) {
+        if (p.getTmp_color() == Color.BLACK_PAWN) {
+            return this.player_white;
+        } else {
+            return this.player_black;
+        }
+    }
+
+    /**
      * Si on va jouer le premier coup
      *
      * @return
@@ -132,7 +132,7 @@ public abstract class Konane implements java.io.Serializable {
     public boolean isSecondShot() {
         return (board.countColor(Color.NO_PAWN) == 1);
     }
-    
+
     /**
      * Liste des mouvements possibles pour le premier coup (joueur noir)
      *
@@ -209,9 +209,9 @@ public abstract class Konane implements java.io.Serializable {
 
         ArrayList<KonaneMove> moves = new ArrayList<KonaneMove>();
 
-        // These are the integer arrays specifying direction
-        int[] dr = {-1, 0, 1, 0};
-        int[] dc = {0, 1, 0, -1};
+        // Tableaux représentant des directions
+        int[] dx = {-1, 0, 1, 0};
+        int[] dy = {0, 1, 0, -1};
 
         int size = board.getNb_case();
 
@@ -219,13 +219,13 @@ public abstract class Konane implements java.io.Serializable {
             for (int j = 0; j < size; j++) {
                 if (board.getPawn(j, j).getColor() == player.getTmp_color()) {
                     for (int k = 0; k < 4; k++) {
-                        moves.addAll(check(i, j, dr[k], dc[k], 1, player.getTmp_color().getOppponent()));
+                        moves.addAll(check(i, j, dx[k], dy[k], 1, player.getTmp_color().getOppponent()));
                     }
                 }
             }
         }
 
-        // some housekeeping. May not be necessary, but you never know
+        // Suppression des éventuels mouvements vides
         while (moves.lastIndexOf(null) != -1) {
             moves.remove(moves.lastIndexOf(null));
         }
@@ -235,20 +235,18 @@ public abstract class Konane implements java.io.Serializable {
     }
 
     /**
-     * Checks whether a jump is possible starting at (r,c) and going in the
-     * direction determined by the row delta, rd, and the column delta, cd. The
-     * factor is used to recursively check for multiple jumps in the same
-     * direction. Returns all possible jumps in the given direction in an
-     * ArrayList
+     * Vérifie si un saut est possible depuis une case donnée et allant dans une 
+     * direction donnée. La fonction est utilisée récursivement avec le paramètre 
+     * factor pour tous les sauts possibles dans une direction. On retourne tous
+     * les sauts possibles dans une direction.
      *
-     * @param x An int describing the row of the origin of the move
-     * @param y An int describing the column of the origin of the move
-     * @param dr An int describing the delta of the row
-     * @param dc An int describing the delta of the column
-     * @param factor An int which is the factor by which the move should be
-     * multiplied
-     * @param opponent A char describing the opponent
-     * @return An ArrayList of KonaneMove objects.
+     * @param x Integer représentant la position du pion à l'origine du mouvement (ligne)
+     * @param y Integer représentant la position du pion à l'origin du mouvement (colonne)
+     * @param dr Integer représentant la position du pion à la fin du mouvement (ligne)
+     * @param dc Integer représentant la position du pion à la fin du mouvement (colonne)
+     * @param factor Integer représentant le facteur par lequel on va multiplier les coordonnées ( dans le cas d'un saut)
+     * @param opponent Color repérésentant la couleur de l'adversaire
+     * @return ArrayList de KonaneMove possibles dans la direction donnée
      */
     private ArrayList<KonaneMove> check(int x, int y, int dr, int dc, int factor, Color opponent) {
 
@@ -256,14 +254,14 @@ public abstract class Konane implements java.io.Serializable {
 
         if (board.contains((x + (factor * dr)), (y + (factor * dc)), opponent)
                 && board.contains((x + ((factor + 1) * dr)), (y + ((factor + 1) * dc)), Color.NO_PAWN)) {
-            // if the move is valid, add it
+            // Si le mouvement est possible, on l'ajoute
             moves.add(new KonaneMove(x, y, (x + ((factor + 1) * dr)), (y + ((factor + 1) * dc))));
-            // check if there's a further jump
+            // On vérifie si il y a d'autres sauts
             moves.addAll(check(x, y, dr, dc, factor + 2, opponent));
         }
         return moves;
     }
-    
+
     public void setLastPlayerPlayed(Player lastPlayerPlayed) {
         this.last_player_played = lastPlayerPlayed;
     }
@@ -272,7 +270,4 @@ public abstract class Konane implements java.io.Serializable {
     public String toString() {
         return "Konane{" + "save_name=" + save_name + ", board=" + board + ", player_white=" + player_white + ", player_black=" + player_black + ", type_ia_white_player=" + type_ia_white_player + ", type_ia_black_player=" + type_ia_black_player + ", help=" + help + ", start=" + start + ", last_player_played=" + last_player_played + '}';
     }
-
-    
-    
 }

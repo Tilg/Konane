@@ -5,7 +5,7 @@
 package model;
 
 /**
- *
+ * Plateau de jeu
  * @author Caedes
  */
 public class Board implements java.io.Serializable {
@@ -16,6 +16,8 @@ public class Board implements java.io.Serializable {
 
     //Constructeur: nouveau plateau
     public Board(String game_name, int nb_case) {
+        
+        
 
         this.game_name = game_name;
         this.nb_case = nb_case;
