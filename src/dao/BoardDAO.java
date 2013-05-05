@@ -4,6 +4,7 @@
  */
 package dao;
 
+import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +20,8 @@ import model.Pawn;
  */
 public class BoardDAO extends DAO<Board> {
 
+    private Connection connexion = Singleton.getInstance().getConnexion();
+    
     @Override
     public Board find(String id) {
         Board board = null;

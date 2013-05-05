@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Caedes
  */
-public abstract class Konane {
+public abstract class Konane implements java.io.Serializable {
 
     protected String save_name = "default"; //The name of the save
     protected Board board;
@@ -31,8 +31,8 @@ public abstract class Konane {
         this.player_white = p_white;
         this.player_black = p_black;
         this.last_player_played = p_black;
-        p_white.setTmp_color(Color.WHITE_PAWN);
-        p_black.setTmp_color(Color.BLACK_PAWN);
+        //p_white.setTmp_color(Color.WHITE_PAWN);
+        //p_black.setTmp_color(Color.BLACK_PAWN);
         this.type_ia_white_player = type_white_player;
         this.type_ia_black_player = type_back_player;
     }
@@ -96,6 +96,7 @@ public abstract class Konane {
 
     public void setSaveName(String saveName) {
         this.save_name = saveName;
+        this.board.setGame_name(save_name);
     }
 
     public void setHelp(boolean help) {
@@ -255,9 +256,15 @@ public abstract class Konane {
         return moves;
     }
     
-    
-
     public void setLastPlayerPlayed(Player lastPlayerPlayed) {
         this.last_player_played = lastPlayerPlayed;
     }
+
+    @Override
+    public String toString() {
+        return "Konane{" + "save_name=" + save_name + ", board=" + board + ", player_white=" + player_white + ", player_black=" + player_black + ", type_ia_white_player=" + type_ia_white_player + ", type_ia_black_player=" + type_ia_black_player + ", help=" + help + ", start=" + start + ", last_player_played=" + last_player_played + '}';
+    }
+
+    
+    
 }

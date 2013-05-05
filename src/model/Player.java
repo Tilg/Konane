@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Caedes
  */
-public abstract class Player {
+public abstract class Player  implements java.io.Serializable  {
 
     private String name = "Player";
     private int nb_wins = 0;
@@ -61,7 +61,12 @@ public abstract class Player {
     public void setTmp_color(Color tmp_color) {
         this.tmp_color = tmp_color;
     }
-    //Fonctions
     
-    public abstract KonaneMove makeMove(Konane game,KonaneMove move);
+    
+    //Fonctions
+
+    @Override
+    public String toString() {
+        return "Player{" + "name=" + name + ", nb_wins=" + nb_wins + ", nb_loose=" + nb_loose + ", tmp_color=" + tmp_color + '}';
+    }
 }

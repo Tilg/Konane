@@ -8,7 +8,7 @@ package model;
  *
  * @author Caedes
  */
-public class KonaneOnline extends Konane {
+public class KonaneOnline extends Konane implements java.io.Serializable {
 
     public KonaneOnline(Player p_white, Player p_black, int nbCase) {
         super(p_white, p_black, nbCase, 0, 0);
@@ -20,8 +20,8 @@ public class KonaneOnline extends Konane {
         this.board = board;
         this.player_white = p_white;
         this.player_black = p_black;
-        p_white.setTmp_color(Color.WHITE_PAWN);
-        p_black.setTmp_color(Color.BLACK_PAWN);
+        //p_white.setTmp_color(Color.WHITE_PAWN);
+        //p_black.setTmp_color(Color.BLACK_PAWN);
         this.last_player_played = last;
         this.type_ia_white_player = type_white_player;
         this.type_ia_black_player = type_black_player;

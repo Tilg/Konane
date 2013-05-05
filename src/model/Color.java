@@ -8,7 +8,7 @@ package model;
  *
  * @author Romain
  */
-public enum Color {
+public enum Color implements java.io.Serializable {
 
     NO_PAWN(-1), BLACK_PAWN(0), WHITE_PAWN(1);
     private int value;
@@ -39,4 +39,11 @@ public enum Color {
         }
         return null;
     }
+
+    @Override
+    public String toString() {
+        return "Color{" + "value=" + value + '}';
+    }
+    
+    
 };

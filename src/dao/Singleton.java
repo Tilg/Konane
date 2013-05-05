@@ -51,7 +51,6 @@ public final class Singleton {
                 singleton = new Singleton();
             } catch (SQLException ex) {
                 System.err.println("Base de données indisponible");
-                System.exit(0);
             }
         }
         return singleton;

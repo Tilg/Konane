@@ -4,6 +4,7 @@
  */
 package dao;
 
+import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,6 +19,8 @@ import model.KonaneOnline;
  */
 public class KonaneOnlineDAO extends DAO<KonaneOnline> {
 
+    private Connection connexion = Singleton.getInstance().getConnexion();
+    
     @Override
     public KonaneOnline find(String id) {
         KonaneOnline konane = null;
