@@ -216,7 +216,7 @@ public abstract class Konane implements java.io.Serializable {
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (board.getPawn(j, j).getColor() == player.getTmp_color()) {
+                if (board.getPawn(i, j).getColor() == player.getTmp_color()) {
                     for (int k = 0; k < 4; k++) {
                         moves.addAll(check(i, j, dx[k], dy[k], 1, player.getTmp_color().getOppponent()));
                     }
@@ -228,7 +228,6 @@ public abstract class Konane implements java.io.Serializable {
         while (moves.lastIndexOf(null) != -1) {
             moves.remove(moves.lastIndexOf(null));
         }
-                        System.out.println("test");
 
         return moves;
 
@@ -255,7 +254,8 @@ public abstract class Konane implements java.io.Serializable {
         if (board.contains((x + (factor * dr)), (y + (factor * dc)), opponent)
                 && board.contains((x + ((factor + 1) * dr)), (y + ((factor + 1) * dc)), Color.NO_PAWN)) {
             // Si le mouvement est possible, on l'ajoute
-            moves.add(new KonaneMove(x, y, (x + ((factor + 1) * dr)), (y + ((factor + 1) * dc))));
+            KonaneMove move = new KonaneMove(x, y, (x + ((factor + 1) * dr)), (y + ((factor + 1) * dc)));
+            moves.add(move);
             // On vérifie si il y a d'autres sauts
             moves.addAll(check(x, y, dr, dc, factor + 2, opponent));
         }

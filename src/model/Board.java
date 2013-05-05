@@ -129,7 +129,7 @@ public class Board implements java.io.Serializable {
      * @param y2 An int giving the column of the destination
      * @return An int giving the distance between two points
      */
-    private int distance(int x1, int y1, int x2, int y2) {
+    public static int distance(int x1, int y1, int x2, int y2) {
         return Math.abs(((x2 - x1) + (y2 - y1)));
     }
 

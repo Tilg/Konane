@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import model.Board;
 import model.Color;
 import model.Konane;
 import model.KonaneMove;
@@ -38,13 +39,16 @@ public class BoardPanel extends JPanel {
             for (int j = 0; j < nbCase; j++) {
                 Color color = Color.getColor((i + j) % 2);
                 JLabel img = getImgWithKonanePawn(i, j, konane);
-                final SquarePanel sp = new SquarePanel(i, j, color, konane, img);
+                final SquarePanel sp = new SquarePanel(i, j, konane, img);
                 sp.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mousePressed(MouseEvent event) {
 
                         if (konane.isFirstShot() || konane.isSecondShot()) {
                             first_clicked = sp;
+                            //first_clicked.remove(first_clicked.getImg());
+                            //first_clicked.add(getImageSelect(konane.getLastPlayerPlayed().getTmp_color())); 
+                            repaint();
                             KonaneMove move = new KonaneMove(first_clicked.getCox(), first_clicked.getCoy());
                             if (move.isValid(konane.generateMoves(konane.getLastPlayerPlayed()))) {
                                 konane.getBoard().makeMove(move);
@@ -60,6 +64,7 @@ public class BoardPanel extends JPanel {
                                 KonaneMove move = new KonaneMove(first_clicked.getCox(), first_clicked.getCoy(), second_clicked.getCox(), second_clicked.getCoy());
                                 if (move.isValid(konane.generateMoves(konane.getLastPlayerPlayed()))) {
                                     konane.getBoard().makeMove(move);
+
                                     makeMove(move);
                                     konane.setLastPlayerPlayed(konane.getOppOf(konane.getLastPlayerPlayed()));
                                 }
@@ -78,15 +83,55 @@ public class BoardPanel extends JPanel {
         this.add(board);
         this.setVisible(true);
     }
+    
+    public JLabel getImagePion(Color color) {
+        if(color == Color.BLACK_PAWN) {
+            return new JLabel(new ImageIcon(getClass().getResource("icons/pionN.png")));
+        } else {
+            return new JLabel(new ImageIcon(getClass().getResource("icons/pionB.png")));
+        }
+    }
+    
+    public JLabel getImageSelect(Color color) {
+        if(color == Color.BLACK_PAWN) {
+            return new JLabel(new ImageIcon(getClass().getResource("icons/pionBS.png")));
+        } else {
+            return new JLabel(new ImageIcon(getClass().getResource("icons/pionNS.png")));
+        }
+    }
 
     public void makeMove(KonaneMove move) {
-        for (int i = 0; i < square_list.size(); i++) {
-            if (square_list.get(i).getCox() == move.getFromX() && square_list.get(i).getCoy() == move.getFromY()) {
-                square_list.get(i).remove(square_list.get(i).getImg());
-                                System.out.println("test");
-                repaint();
+
+        JLabel first = first_clicked.getImg();
+        first_clicked.remove(first_clicked.getImg());
+
+        if (move.getFromX() != move.getToX() || move.getFromY() != move.getToY()) {
+            int x1 = move.getFromX();
+            int x2 = move.getToX();
+            int y1 = move.getFromY();
+            int y2 = move.getToY();
+
+            int distance = Board.distance(x1, y1, x2, y2);
+
+            int jumps = distance / 2;
+            int dx, dy;
+            dx = (x2 - x1) / distance;
+            dy = (y2 - y1) / distance;
+
+            // for each jump
+            for (int j = 0; j < jumps; j++) {
+                for (int k = 0; k < square_list.size(); k++) {
+                    if (square_list.get(k).getCox() == x1 + dx && square_list.get(k).getCoy() == y1 + dy) {
+                        square_list.get(k).remove(square_list.get(k).getImg());
+
+                    }
+                }
+                x1 += 2 * dx;
+                y1 += 2 * dy;
             }
+            second_clicked.add(first_clicked.getImg());
         }
+        repaint();
     }
 
     public JLabel getImgWithKonanePawn(int x, int y, Konane konane) {
@@ -94,9 +139,9 @@ public class BoardPanel extends JPanel {
         Pawn pawn = konane.getBoard().getPawn(x, y);
         if (pawn == null) {
         } else if (pawn.getColor() == Color.BLACK_PAWN) {
-            img = new JLabel(new ImageIcon(getClass().getResource("icons/black_pawn.png")));
+            img = new JLabel(new ImageIcon(getClass().getResource("icons/pionN.png")));
         } else {
-            img = new JLabel(new ImageIcon(getClass().getResource("icons/white_pawn.png")));
+            img = new JLabel(new ImageIcon(getClass().getResource("icons/pionB.png")));
         }
         return img;
     }

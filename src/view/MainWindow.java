@@ -321,6 +321,8 @@ public class MainWindow extends javax.swing.JFrame {
             Jp2 = new Human(p_black);
         }
         this.game = new KonaneLocal(Jp1, Jp2, nbCase, typeP1, typeP2);
+        this.game.getPlayerBlack().setTmp_color(model.Color.BLACK_PAWN);
+        this.game.getPlayerWhite().setTmp_color(model.Color.WHITE_PAWN);
 
         this.boardPanel = new BoardPanel(nbCase, this.game);
         this.GamePanel.setPreferredSize(new Dimension(800, 800));

@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import model.Color;
@@ -26,20 +27,21 @@ public class SquarePanel extends JPanel {
     private Konane konane;
     private JLabel img;
 
-    public SquarePanel(int cox, int coy, Color color, Konane konane, JLabel img) {
+    public SquarePanel(int cox, int coy, Konane konane, JLabel img) {
         this.img = img;
-        this.add(img);
         this.konane = konane;
         this.cox = cox;
         this.coy = coy;
         this.color = color;
+        
         this.setPreferredSize(new Dimension(60, 60));
         // Définition de l'arriere plan
-        if (color.equals(Color.BLACK_PAWN)) {
-            this.setBackground(java.awt.Color.BLACK);
+        /*if ((cox + coy) % 2 == 1) {
+            this.add(new JLabel(new ImageIcon(getClass().getResource("icons/caseN.png"))));
         } else {
-            this.setBackground(java.awt.Color.WHITE);
-        }
+            this.add(new JLabel(new ImageIcon(getClass().getResource("icons/caseB.png"))));
+        }*/
+        this.add(img);
         //Mettre une image correspondant 
 
         
