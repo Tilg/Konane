@@ -143,7 +143,7 @@ public class Board implements java.io.Serializable {
         int distance = distance(x1, y1, x2, y2);
         Pawn pawn = this.getPawn(x1, y1);
 
-        this.setPawn(null, x1, y1);
+        this.setPawn(new Pawn(x1,y1,Color.NO_PAWN), x1, y1);
         
         if (distance != 0) {
             int jumps = distance / 2;
@@ -152,8 +152,8 @@ public class Board implements java.io.Serializable {
             dy = (y2 - y1) / distance;
             // for each jump
             for (int i = 0; i < jumps; i++) {
-                this.setPawn(null, x1, y1);
-                this.setPawn(null, x1 + dx, y1 + dy);
+                this.setPawn(new Pawn(x1,y1,Color.NO_PAWN), x1, y1);
+                this.setPawn(new Pawn(x1 + dx,y1 + dy,Color.NO_PAWN), x1 + dx, y1 + dy);
                 x1 += 2 * dx;
                 y1 += 2 * dy;
                 this.setPawn(pawn, x1, y1);

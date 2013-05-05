@@ -89,6 +89,7 @@ public class KonaneMove {
                 return true;
             }
         }
+        
         return false;
     }
 

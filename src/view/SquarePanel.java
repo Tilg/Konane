@@ -5,9 +5,11 @@
 package view;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import model.Color;
 import model.Konane;
@@ -18,37 +20,52 @@ import model.Konane;
  */
 public class SquarePanel extends JPanel {
 
-    private int x;
-    private int y;
+    private int cox;
+    private int coy;
     private Color color;
     private Konane konane;
-    private Image img;
+    private JLabel img;
 
-    public SquarePanel(int x, int y, Color color, Konane konane, Image img) {
+    public SquarePanel(int cox, int coy, Color color, Konane konane, JLabel img) {
         this.img = img;
+        this.add(img);
         this.konane = konane;
-        this.x = x;
-        this.y = y;
+        this.cox = cox;
+        this.coy = coy;
         this.color = color;
         this.setPreferredSize(new Dimension(60, 60));
         // Définition de l'arriere plan
         if (color.equals(Color.BLACK_PAWN)) {
             this.setBackground(java.awt.Color.BLACK);
-        }
-        else {
+        } else {
             this.setBackground(java.awt.Color.WHITE);
         }
         //Mettre une image correspondant 
+
         
-         this.addMouseListener(new MouseAdapter(){      
-          public void mouseReleased(MouseEvent event){
-                if(event.getButton() == BUTTON1){
-                    
-                }
-            }
-        });
     }
 
-   
+    public int getCox() {
+        return cox;
+    }
+
+    public int getCoy() {
+        return coy;
+    }
+
+    public JLabel getImg() {
+        return img;
+    }
+
+    public void setImg(JLabel img) {
+        this.img = img;
+        this.add(img);
+    }
+    
+    
+    
+    
+    
+    
 
 }

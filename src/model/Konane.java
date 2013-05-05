@@ -139,7 +139,6 @@ public abstract class Konane implements java.io.Serializable {
      * @return ArrayList de KonaneMove possibles pour le premier coup
      */
     private ArrayList<KonaneMove> generateFirstMoves() {
-
         int size = board.getNb_case();
 
         ArrayList<KonaneMove> first_moves = new ArrayList<KonaneMove>();
@@ -164,17 +163,17 @@ public abstract class Konane implements java.io.Serializable {
         ArrayList<KonaneMove> secondMoves = new ArrayList<KonaneMove>();
 
         // Si le premier mouvement est en haut à gauche
-        if (board.getPawn(0, 0) == null) {
+        if (board.getPawn(0, 0).getColor() == Color.NO_PAWN) {
             // 2 mouvements possibles
             secondMoves.add(new KonaneMove(0, 1));
             secondMoves.add(new KonaneMove(1, 0));
         } // Si le deuxieme coup est en bas à droite 
-        else if (board.getPawn(size - 1, size - 1) == null) {
+        else if (board.getPawn(size - 1, size - 1).getColor() == Color.NO_PAWN) {
             // 2 mouvements possibles
             secondMoves.add(new KonaneMove(size - 1, size - 2));
             secondMoves.add(new KonaneMove(size - 2, size - 1));
         } // Si le premier coup est au milieu 
-        else if (board.getPawn((size / 2) - 1, (size / 2) - 1) == null) {
+        else if (board.getPawn((size / 2) - 1, (size / 2) - 1).getColor() == Color.NO_PAWN) {
             wPos = (size / 2) - 1;
             // 4 mouvements possibles
             secondMoves.add(new KonaneMove(wPos, wPos + 1));
@@ -229,6 +228,7 @@ public abstract class Konane implements java.io.Serializable {
         while (moves.lastIndexOf(null) != -1) {
             moves.remove(moves.lastIndexOf(null));
         }
+                        System.out.println("test");
 
         return moves;
 
