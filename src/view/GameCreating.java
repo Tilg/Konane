@@ -70,7 +70,7 @@ public class GameCreating extends JDialog {
         type_J2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Humain", "IA niveau 1", "IA niveau 2", "IA niveau 3" }));
         color.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "blanc", "noir" }));
         type_J1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Humain" }));
-        nb_case.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "8", "10" }));
+        nb_case.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"4","6", "8", "10" }));
         
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
