@@ -8,7 +8,7 @@ package model;
  *
  * @author Caedes
  */
-public class Pawn {
+public class Pawn implements java.io.Serializable {
     
     /*public final static int NO_PAWN = -1;
     public final static int BLACK_PAWN = 0;
@@ -51,5 +51,9 @@ public class Pawn {
     }
 
     //Fonctions
-    
+
+    @Override
+    public String toString() {
+        return "Pawn{" + "color=" + color + ", x=" + x + ", y=" + y + '}';
+    }
 }

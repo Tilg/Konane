@@ -12,8 +12,6 @@ import com.mysql.jdbc.Connection;
  */
 public abstract class DAO<T> {
     
-    protected Connection connexion = Singleton.getInstance().getConnexion();
-    
     public abstract T find(String id);
     public abstract T create(T object);
     public abstract T update(T object);

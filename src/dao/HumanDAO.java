@@ -4,6 +4,7 @@
  */
 package dao;
 
+import com.mysql.jdbc.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,6 +14,8 @@ import model.Human;
 
 public class HumanDAO extends DAO<Human> {
 
+    private Connection connexion = Singleton.getInstance().getConnexion();
+    
     @Override
     public Human find(String id) {
         Human player = null;

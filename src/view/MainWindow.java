@@ -5,6 +5,7 @@
 package view;
 
 import javax.swing.JFrame;
+import model.Human;
 import model.Konane;
 import model.KonaneLocal;
 import model.KonaneOnline;
@@ -396,8 +397,8 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_scoreJ2ActionPerformed
 
     public void beginGame(String p1, String p2, int nbCase, int typeP1, int typeP2){
-        Player Jp1 = new Player(p1);
-        Player Jp2 = new Player(p2);
+        Player Jp1 = new Human(p1);
+        Player Jp2 = new Human(p2);
         this.game = new KonaneLocal(Jp1, Jp2, nbCase, typeP1, typeP2);
         
         BoardPanel boardPanel = new BoardPanel(nbCase);

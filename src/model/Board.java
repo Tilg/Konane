@@ -8,7 +8,7 @@ package model;
  *
  * @author Caedes
  */
-public class Board {
+public class Board implements java.io.Serializable {
 
     private String game_name;
     private int nb_case;
@@ -59,6 +59,15 @@ public class Board {
         this.getSquares()[x][y] = pawn;
     }
 
+    public void setGame_name(String game_name) {
+        this.game_name = game_name;
+    }
+
+    @Override
+    public String toString() {
+        return "Board{" + "game_name=" + game_name + ", nb_case=" + nb_case + ", squares=" + squares.toString() + '}';
+    }
+    
     /**
      * Somme des occurences d'une couleur sur le plateau (blanc, noir, pas de
      * pion)

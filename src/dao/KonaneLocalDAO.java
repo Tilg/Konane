@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.KonaneLocal;
@@ -21,6 +22,8 @@ import model.KonaneLocal;
  */
 public class KonaneLocalDAO extends DAO<KonaneLocal> {
 
+    private static String path = "C:\\Users\\Romain\\";
+    
     @Override
     public KonaneLocal find(String id) {
         KonaneLocal konane = null;
@@ -28,7 +31,7 @@ public class KonaneLocalDAO extends DAO<KonaneLocal> {
         ObjectInputStream ois = null;
 
         try {
-            fis = new FileInputStream(id);
+            fis = new FileInputStream(path+id);
             ois = new ObjectInputStream(fis);
 
             try {
@@ -57,11 +60,12 @@ public class KonaneLocalDAO extends DAO<KonaneLocal> {
         ObjectOutputStream oos = null;
 
         try {
-            fos = new FileOutputStream(object.getSaveName());
+            fos = new FileOutputStream(path+object.getSaveName());
             oos = new ObjectOutputStream(fos);
 
             try {
                 oos.writeObject(object);
+                oos.flush();
             } catch (IOException ex) {
                 Logger.getLogger(KonaneLocalDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
@@ -77,6 +81,8 @@ public class KonaneLocalDAO extends DAO<KonaneLocal> {
             Logger.getLogger(KonaneLocalDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        System.out.print(object.toString());
+        
         return object;
     }
 
@@ -86,11 +92,12 @@ public class KonaneLocalDAO extends DAO<KonaneLocal> {
         ObjectOutputStream oos = null;
 
         try {
-            fos = new FileOutputStream(object.getSaveName());
+            fos = new FileOutputStream(path+object.getSaveName());
             oos = new ObjectOutputStream(fos);
 
             try {
                 oos.writeObject(object);
+                oos.flush();
             } catch (IOException ex) {
                 Logger.getLogger(KonaneLocalDAO.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
@@ -112,6 +119,6 @@ public class KonaneLocalDAO extends DAO<KonaneLocal> {
     @Override
     public void delete(KonaneLocal object) {
         boolean is_delete;
-        is_delete = new File(object.getSaveName()).delete();
+        is_delete = new File(path+object.getSaveName()).delete();
     }
 }
