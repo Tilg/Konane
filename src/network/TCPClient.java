@@ -44,8 +44,6 @@ public class TCPClient extends Thread{
         else if(player_number == 2){
             socket = new Socket("localhost",1101);
         }
-        System.out.println("Initialisation faite");
-        
     }
     
     public void sendMessage() throws IOException{
@@ -61,7 +59,7 @@ public class TCPClient extends Thread{
             out.println(msg);
             out.flush();
         }
-        System.out.println("Fin d'envoie");
+        System.out.println("Fin d'envoie\n");
     }
 
     public void setMsg(String msg) {
