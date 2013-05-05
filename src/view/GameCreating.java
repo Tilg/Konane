@@ -7,6 +7,8 @@ package view;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog; 
@@ -155,6 +157,15 @@ public class GameCreating extends JDialog {
                     .addComponent(cancel))
                 .addGap(37, 37, 37))
         );
+        
+        save.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                createGame();
+                setVisible(false);
+            }
+        });
 
         pack();
         this.setLocationRelativeTo(null);

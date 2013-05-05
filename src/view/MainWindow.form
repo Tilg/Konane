@@ -115,9 +115,9 @@
           <Component id="Menu_icon" alignment="1" pref="888" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="ScorePanel" min="-2" max="-2" attributes="0"/>
+              <Component id="GamePanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="GamePanel" max="32767" attributes="0"/>
+              <Component id="ScorePanel" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -128,8 +128,8 @@
               <Component id="Menu_icon" min="-2" pref="35" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="GamePanel" max="32767" attributes="0"/>
                   <Component id="ScorePanel" max="32767" attributes="0"/>
+                  <Component id="GamePanel" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -216,7 +216,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="GamePanel">
+    <Container class="javax.swing.JPanel" name="ScorePanel">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -378,7 +378,7 @@
         </Container>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="ScorePanel">
+    <Container class="javax.swing.JPanel" name="GamePanel">
 
       <Layout>
         <DimensionLayout dim="0">

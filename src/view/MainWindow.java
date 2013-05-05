@@ -4,7 +4,10 @@
  */
 package view;
 
+import java.awt.Color;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import model.CPU;
 import model.Human;
 import model.Konane;
 import model.KonaneLocal;
@@ -52,7 +55,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         RulesIcon = new javax.swing.JButton();
-        GamePanel = new javax.swing.JPanel();
+        ScorePanel = new javax.swing.JPanel();
         LabelP1 = new javax.swing.JLabel();
         LabelP2 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
@@ -64,7 +67,7 @@ public class MainWindow extends javax.swing.JFrame {
         labelscoreJ2 = new javax.swing.JLabel();
         colorJ1_panel = new javax.swing.JPanel();
         colorJ2_panel = new javax.swing.JPanel();
-        ScorePanel = new javax.swing.JPanel();
+        GamePanel = new javax.swing.JPanel();
         Menu_Main = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         NewGameButton = new javax.swing.JMenuItem();
@@ -179,50 +182,50 @@ public class MainWindow extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout GamePanelLayout = new javax.swing.GroupLayout(GamePanel);
-        GamePanel.setLayout(GamePanelLayout);
-        GamePanelLayout.setHorizontalGroup(
-            GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(GamePanelLayout.createSequentialGroup()
-                .addGroup(GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout ScorePanelLayout = new javax.swing.GroupLayout(ScorePanel);
+        ScorePanel.setLayout(ScorePanelLayout);
+        ScorePanelLayout.setHorizontalGroup(
+            ScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ScorePanelLayout.createSequentialGroup()
+                .addGroup(ScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(GamePanelLayout.createSequentialGroup()
-                        .addGroup(GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(GamePanelLayout.createSequentialGroup()
+                    .addGroup(ScorePanelLayout.createSequentialGroup()
+                        .addGroup(ScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(ScorePanelLayout.createSequentialGroup()
                                 .addGap(32, 32, 32)
-                                .addGroup(GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GamePanelLayout.createSequentialGroup()
-                                        .addGroup(GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(ScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ScorePanelLayout.createSequentialGroup()
+                                        .addGroup(ScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(labelscoreJ1)
                                             .addComponent(scoreJ1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(2, 2, 2))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(LabelP1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GamePanelLayout.createSequentialGroup()
+                                        .addGroup(ScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ScorePanelLayout.createSequentialGroup()
                                                 .addGap(38, 38, 38)
-                                                .addGroup(GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(ScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(labelscoreJ2)
                                                     .addComponent(scoreJ2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(GamePanelLayout.createSequentialGroup()
+                                            .addGroup(ScorePanelLayout.createSequentialGroup()
                                                 .addGap(2, 2, 2)
                                                 .addComponent(LabelP2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                            .addGroup(GamePanelLayout.createSequentialGroup()
+                            .addGroup(ScorePanelLayout.createSequentialGroup()
                                 .addGap(48, 48, 48)
-                                .addGroup(GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(ScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(AbandJ1)
                                     .addComponent(colorJ1_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(GamePanelLayout.createSequentialGroup()
+                            .addGroup(ScorePanelLayout.createSequentialGroup()
                                 .addGap(49, 49, 49)
-                                .addGroup(GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(ScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(AbandJ2)
                                     .addComponent(colorJ2_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        GamePanelLayout.setVerticalGroup(
-            GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(GamePanelLayout.createSequentialGroup()
+        ScorePanelLayout.setVerticalGroup(
+            ScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ScorePanelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(LabelP1)
                 .addGap(28, 28, 28)
@@ -248,14 +251,14 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
-        javax.swing.GroupLayout ScorePanelLayout = new javax.swing.GroupLayout(ScorePanel);
-        ScorePanel.setLayout(ScorePanelLayout);
-        ScorePanelLayout.setHorizontalGroup(
-            ScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout GamePanelLayout = new javax.swing.GroupLayout(GamePanel);
+        GamePanel.setLayout(GamePanelLayout);
+        GamePanelLayout.setHorizontalGroup(
+            GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 659, Short.MAX_VALUE)
         );
-        ScorePanelLayout.setVerticalGroup(
-            ScorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        GamePanelLayout.setVerticalGroup(
+            GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -334,9 +337,9 @@ public class MainWindow extends javax.swing.JFrame {
             .addComponent(Menu_icon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScorePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(GamePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(GamePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ScorePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -345,8 +348,8 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(Menu_icon, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(GamePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ScorePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ScorePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(GamePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -396,18 +399,29 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_scoreJ2ActionPerformed
 
-    public void beginGame(String p1, String p2, int nbCase, int typeP1, int typeP2){
-        Player Jp1 = new Human(p1);
-        Player Jp2 = new Human(p2);
+    public void beginGame(String p_white, String p_black, int nbCase, int typeP1, int typeP2){
+        
+        Player Jp1 = null;
+        Player Jp2 = null;
+        
+        if(typeP1 == 0) {
+            Jp1 = new Human(p_white);
+            Jp2 = new CPU(p_black);
+        }
+        else {
+            Jp1 = new CPU(p_white);
+            Jp2 = new Human(p_black);
+        }
         this.game = new KonaneLocal(Jp1, Jp2, nbCase, typeP1, typeP2);
         
         BoardPanel boardPanel = new BoardPanel(nbCase);
         this.GamePanel.add(boardPanel);
         
-        this.GamePanel.setVisible(true);
         this.ScorePanel.setVisible(true);
-        this.LabelP1.setText(p1);
-        this.LabelP2.setText(p2);
+        this.GamePanel.setVisible(true);
+        this.LabelP1.setText(p_white);
+        this.LabelP2.setText(p_black);
+        
         
     }
     /**
