@@ -4,6 +4,7 @@
  */
 package view;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.JLabel;
@@ -21,6 +22,7 @@ public class BoardPanel extends JPanel {
     private int nb_case;
     
     public BoardPanel(int nbCase) {
+        this.setPreferredSize(new Dimension(800, 800));
         GridLayout layout = new GridLayout(nbCase, nbCase);
         this.nb_case = nbCase;
         JPanel board = new JPanel(new GridLayout(nbCase, nbCase));

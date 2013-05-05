@@ -5,8 +5,11 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JPanel;
 import model.CPU;
 import model.Human;
 import model.Konane;
@@ -21,6 +24,7 @@ import model.Player;
 public class MainWindow extends javax.swing.JFrame {
     
     private Konane game;
+    private JPanel GamePanel;
         
     /**
      * Creates new form MainWindow
@@ -32,6 +36,9 @@ public class MainWindow extends javax.swing.JFrame {
         //this.setResizable(false);             //Empeche le redimensionnement
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
+        this.GamePanel = new JPanel();
+        this.GamePanel.setSize(600, 600);
+        this.add(GamePanel);
         this.setLocationRelativeTo(null);
     }
 
@@ -44,16 +51,6 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Menu_icon = new javax.swing.JToolBar();
-        GameIcon = new javax.swing.JButton();
-        OnlineIcon = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        SaveIcon = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JToolBar.Separator();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JToolBar.Separator();
-        RulesIcon = new javax.swing.JButton();
         ScorePanel = new javax.swing.JPanel();
         LabelP1 = new javax.swing.JLabel();
         LabelP2 = new javax.swing.JLabel();
@@ -66,7 +63,6 @@ public class MainWindow extends javax.swing.JFrame {
         labelscoreJ2 = new javax.swing.JLabel();
         colorJ1_panel = new javax.swing.JPanel();
         colorJ2_panel = new javax.swing.JPanel();
-        GamePanel = new javax.swing.JPanel();
         Menu_Main = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         NewGameButton = new javax.swing.JMenuItem();
@@ -82,64 +78,6 @@ public class MainWindow extends javax.swing.JFrame {
         AboutMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        Menu_icon.setRollover(true);
-
-        GameIcon.setText("NewGame");
-        GameIcon.setFocusable(false);
-        GameIcon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        GameIcon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Menu_icon.add(GameIcon);
-
-        OnlineIcon.setText("Online");
-        OnlineIcon.setFocusable(false);
-        OnlineIcon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        OnlineIcon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        OnlineIcon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OnlineIconActionPerformed(evt);
-            }
-        });
-        Menu_icon.add(OnlineIcon);
-        OnlineIcon.getAccessibleContext().setAccessibleDescription("Play online");
-
-        jButton1.setText("Load");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Menu_icon.add(jButton1);
-
-        SaveIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icons/document-save.png"))); // NOI18N
-        SaveIcon.setFocusable(false);
-        SaveIcon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        SaveIcon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        SaveIcon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SaveIconActionPerformed(evt);
-            }
-        });
-        Menu_icon.add(SaveIcon);
-        Menu_icon.add(jSeparator1);
-
-        jCheckBox1.setFocusable(false);
-        jCheckBox1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jCheckBox1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        Menu_icon.add(jCheckBox1);
-
-        jLabel1.setText("  Assistance  ");
-        Menu_icon.add(jLabel1);
-        Menu_icon.add(jSeparator2);
-
-        RulesIcon.setText("Règles");
-        RulesIcon.setFocusable(false);
-        RulesIcon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        RulesIcon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        RulesIcon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RulesIconActionPerformed(evt);
-            }
-        });
-        Menu_icon.add(RulesIcon);
 
         LabelP1.setText("Joueur1");
 
@@ -251,17 +189,6 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(62, 62, 62))
         );
 
-        javax.swing.GroupLayout GamePanelLayout = new javax.swing.GroupLayout(GamePanel);
-        GamePanel.setLayout(GamePanelLayout);
-        GamePanelLayout.setHorizontalGroup(
-            GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 659, Short.MAX_VALUE)
-        );
-        GamePanelLayout.setVerticalGroup(
-            GamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
         jMenu1.setText("Partie");
 
         NewGameButton.setText("Nouvelle Partie...           F1");
@@ -334,22 +261,16 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Menu_icon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(GamePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(679, 679, 679)
                 .addComponent(ScorePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Menu_icon, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ScorePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(GamePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addComponent(ScorePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -371,23 +292,9 @@ public class MainWindow extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_CloseButtonActionPerformed
 
-    private void OnlineIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnlineIconActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_OnlineIconActionPerformed
-
-    private void SaveIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveIconActionPerformed
-        LoadOrSave JSave = new LoadOrSave(this,1);
-        JSave.setTitle("Sauvegarder en");
-        JSave.setVisible(true);
-    }//GEN-LAST:event_SaveIconActionPerformed
-
     private void IAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IAButtonActionPerformed
         IAChoosing JIAChoose = new IAChoosing(this);
     }//GEN-LAST:event_IAButtonActionPerformed
-
-    private void RulesIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RulesIconActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RulesIconActionPerformed
 
     private void LoadGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadGameButtonActionPerformed
         LoadOrSave JLoad = new LoadOrSave(this,0);
@@ -413,13 +320,17 @@ public class MainWindow extends javax.swing.JFrame {
             Jp2 = new Human(p_black);
         }
         this.game = new KonaneLocal(Jp1, Jp2, nbCase, typeP1, typeP2);
-        
+
         BoardPanel boardPanel = new BoardPanel(nbCase);
-        this.GamePanel.add(boardPanel);
-        //JLabel test = new JLabel("lol");
-        //this.GamePanel.add(test);
-        //this.GamePanel.setBackground(Color.red);
         
+        this.GamePanel.setPreferredSize(new Dimension(800, 800));
+        this.GamePanel.add(boardPanel,  new GridBagConstraints (0, 0, 1, 1, 0, 0,
+                                                   GridBagConstraints.CENTER,
+                                                   GridBagConstraints.CENTER,
+                                                   new Insets (0,0,0,0), 0, 0));
+        //this.GamePanel.setBackground(Color.red);
+        pack();
+        setResizable(false);     
         this.ScorePanel.setVisible(true);
         this.GamePanel.setVisible(true);
         this.LabelP1.setText(p_white);
@@ -467,33 +378,22 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton AbandJ2;
     private javax.swing.JMenuItem AboutMenu;
     private javax.swing.JMenuItem CloseButton;
-    private javax.swing.JButton GameIcon;
-    private javax.swing.JPanel GamePanel;
     private javax.swing.JMenuItem IAButton;
     private javax.swing.JLabel LabelP1;
     private javax.swing.JLabel LabelP2;
     private javax.swing.JMenuItem LoadGameButton;
     private javax.swing.JMenuBar Menu_Main;
-    private javax.swing.JToolBar Menu_icon;
     private javax.swing.JCheckBoxMenuItem MoveHelpingButton;
     private javax.swing.JMenuItem NewGameButton;
-    private javax.swing.JButton OnlineIcon;
     private javax.swing.JMenuItem RulesButton;
-    private javax.swing.JButton RulesIcon;
     private javax.swing.JMenuItem SaveGameButton;
-    private javax.swing.JButton SaveIcon;
     private javax.swing.JPanel ScorePanel;
     private javax.swing.JPanel colorJ1_panel;
     private javax.swing.JPanel colorJ2_panel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JToolBar.Separator jSeparator1;
-    private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel labelscoreJ1;
     private javax.swing.JLabel labelscoreJ2;

@@ -4,6 +4,7 @@
  */
 package view;
 
+import java.awt.Dimension;
 import javax.swing.JPanel;
 import model.Color;
 
@@ -21,6 +22,7 @@ public class SquarePanel extends JPanel {
         this.x = x;
         this.y = y;
         this.color = color;
+        this.setPreferredSize(new Dimension(60, 60));
         // Définition de l'arriere plan
         if (color.equals(Color.BLACK_PAWN)) {
             this.setBackground(java.awt.Color.BLACK);
