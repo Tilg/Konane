@@ -21,6 +21,8 @@ import model.Konane;
 import model.KonaneLocal;
 import model.KonaneMove;
 import model.Pawn;
+import java.io.*;
+import java.util.*;
 
 /**
  *
@@ -129,7 +131,7 @@ public class BoardPanel extends JPanel {
                 for (int k = 0; k < square_list.size(); k++) {
                     if (square_list.get(k).getCox() == x1 + dx && square_list.get(k).getCoy() == y1 + dy) {
                         square_list.get(k).remove(square_list.get(k).getImg());
-
+                        System.out.println("Suppression: " + (x1+dx) + "," + (y1+dy));
                     }
                 }
                 x1 += 2 * dx;

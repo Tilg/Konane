@@ -102,4 +102,5 @@ public class KonaneMove {
         boolean isJumpY = ((this.to_Y - this.from_Y) % 2 == 0);
         return (isJumpX || isJumpY);
     }
+    
 }
